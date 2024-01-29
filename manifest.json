@@ -1,26 +1,28 @@
 {
   "name": "LIL PHISHBOY",
-  "version": "0.10055",
+  "version": "0.10059",
   "manifest_version": 3,
   "permissions": [
-  "storage"
+      "storage"
   ],
   "content_scripts": [
     {
-      "matches": ["https://*/*"],
+      "matches": ["<all_urls>"],
       "js": ["content_script.js"]
     },
     {
-      "matches": ["http://*/*"],
+      "matches": ["<all_urls>"],
       "js": ["content_script.js"]
     }
   ],
-  "web_accessible_resources": [{
-      "resources": ["passwd"],
-      "matches": ["<all_urls>"]
+  "web_accessible_resources": [
+  {
+      "matches": ["<all_urls>"],
+      "resources": ["passwd"]
   },
   {
-      "resources": ["es_url"],
-      "matches": ["<all_urls>"]
-  }]
+      "matches": ["<all_urls>"],
+      "resources": ["es_url"]
+  }
+  ]
 }

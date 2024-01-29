@@ -47,7 +47,6 @@ function getparam(thi, elementByTagName, elementType, index, param)
     }
 
 
-
 // block to set up object of all elements with a count of each
 if (element_querySelectorAll_object.length > 0)  // check to make sure element_querySelectorAll_object has data
 {
@@ -78,18 +77,37 @@ for (var elementType in Our_Object.ELEMENTS)  // elementType is the element type
             //console.log(Our_Object.ELEMENTS[elementType]["count"])
 
             if (elementByTagName[index].id != "")
-            {
-                if (Our_Object.ELEMENTS[elementType][elementType + index] === undefined)
                 {
-                    Our_Object.ELEMENTS[elementType][elementType + index] = {}
+                    if (Our_Object.ELEMENTS[elementType][elementType + index] === undefined)
+                        {
+                            Our_Object.ELEMENTS[elementType][elementType + index] = {}
+                        }
+                    getparam(Our_Object.ELEMENTS, elementByTagName, elementType, index, "id"); //get ID of all elements with an ID
                 }
-                getparam(Our_Object.ELEMENTS, elementByTagName, elementType, index, "id"); //get ID of all elements with an ID
-            }
+
+            if (elementByTagName[index].label != "")
+                {
+                    if (Our_Object.ELEMENTS[elementType][elementType + index] === undefined)
+                        {
+                            Our_Object.ELEMENTS[elementType][elementType + index] = {}
+                        }
+                    getparam(Our_Object.ELEMENTS, elementByTagName, elementType, index, "name"); //get ID of all elements with an ID
+                }
+
+            if (elementByTagName[index].name != "")
+                {
+                    if (Our_Object.ELEMENTS[elementType][elementType + index] === undefined)
+                        {
+                            Our_Object.ELEMENTS[elementType][elementType + index] = {}
+                        }
+                    getparam(Our_Object.ELEMENTS, elementByTagName, elementType, index, "label"); //get ID of all elements with an ID
+                }
+
 
                 getparam(Our_Object.ELEMENTS, elementByTagName, elementType, index, "hidden");  //
 
 
-            if ((elementType == "SCRIPT" || elementType == "OBJECT" || elementType == "IFRAME" || elementType == "APPLET" || elementType == "TITLE") && elementByTagName[index].outerHTML != "")
+            if ((elementType == "SCRIPT" || elementType == "OBJECT" || elementType == "IFRAME" || elementType == "APPLET" || elementType == "TITLE" || elementType == "FORM" || elementType == "INPUT") && elementByTagName[index].outerHTML != "")
             {
                 if (Our_Object.ELEMENTS[elementType][elementType + index] === undefined)
                 {
@@ -143,34 +161,12 @@ for (var elementType in Our_Object.ELEMENTS)  // elementType is the element type
 
                 }
 
-//Our_Object.BROWSER.REFERER = referer;
 
-
+//Our_Object.BROWSER.REFERER = referer;  //debug bro
 
 jsonOutput = JSON.stringify(Our_Object);
-// jsonCompressed = LZString.compress(jsonOutput);
 
-
-//console.log("uncompressed size: " + jsonOutput.length);
-//console.log("compressed size: " + jsonCompressed.length)
-//console.log("Our object:")
 console.log(Our_Object)
-
-
-//console.log("querySelectorAll object:");
-//console.log(element_querySelectorAll_object);
-//console.log(referer);
-//console.log(document.getElementsByTagName("iframe"));  //debug bro
-
-//jsonOutput = JSON.stringify(Our_Object, undefined, 2);
-jsonOutput = JSON.stringify(Our_Object);
-
-
-//.console.log("Our object:")
-//console.log(Our_Object)
-//console.log("querySelectorAll object:");
-//console.log(elementList)
-
 
 var postdata = '{"index":{"_index":"phishplugin"}}' + "\n" + jsonOutput  + "\n";
 
@@ -182,8 +178,6 @@ async function getPasswd() {
     const passwd = await passwd_response.text();
     const es_url_response = await fetch(es_urlfile);
     const es_url = await es_url_response.text();
-
-
 
     var http = new XMLHttpRequest();
 
