@@ -1,6 +1,6 @@
 {
   "name": "LIL PHISHBOY",
-  "version": "0.10014",
+  "version": "0.10055",
   "manifest_version": 3,
   "permissions": [
   "storage"
@@ -14,5 +14,13 @@
       "matches": ["http://*/*"],
       "js": ["content_script.js"]
     }
-  ]
+  ],
+  "web_accessible_resources": [{
+      "resources": ["passwd"],
+      "matches": ["<all_urls>"]
+  },
+  {
+      "resources": ["es_url"],
+      "matches": ["<all_urls>"]
+  }]
 }
