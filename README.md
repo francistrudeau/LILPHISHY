@@ -1,4 +1,4 @@
-# LIL PHISY extension for `Chrom(?:e|ium)`
+# LIL PHISHY extension for `Chrom(?:e|ium)`
 
 ## Chrome Plugin that parses the DOM, turns it into json and dumps it into ES
 
